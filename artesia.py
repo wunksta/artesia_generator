@@ -1,3 +1,6 @@
+#!/usr/local/bin/python
+# UTF-8
+
 # to do list
 # 1. keep track of stats
 # 2. keep track of contacts
@@ -8,7 +11,10 @@ from random import random, choice, randint
 
 def Athairi_birth_place():
     social_level = 0
+    print('Athairi_birth_place():')
+    print('Social level is', social_level)
     birth_place = (randint(1, 10))
+    print('Birth place random number is ', birth_place)
     if birth_place == 1:
         print(' Bandit Camp. Social Level is Outlaw')
         social_level -= 5
@@ -43,6 +49,7 @@ def Athairi_birth_place():
 
 
 def Athairi_parents(social_level):
+    print('Social level is', social_level)
     Athairi_mother_occupation(social_level)
     print('Your mother was descended from:')
     Athairi_parent_lineage()
@@ -83,9 +90,6 @@ def Athairi_father_occupation(social_level):
 
 
 def Athairi_mother_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 4:
             print('Mother is a Bandit.')
@@ -94,13 +98,11 @@ def Athairi_mother_outlaw():
         elif roll == 10:
             Athairi_mother_forester()
         else:
-            should_restart = True
+            Athairi_mother_outlaw()
+        return
 
 
 def Athairi_mother_forester():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_mother_outlaw()
@@ -111,14 +113,11 @@ def Athairi_mother_forester():
         elif roll == 6 or 7 or 8:
             print('Mother is a Laborer.')
         else:
-            should_restart = True
+            Athairi_mother_forester()
         return
 
 
 def Athairi_mother_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_mother_forester()
@@ -137,14 +136,11 @@ def Athairi_mother_commoner():
         elif roll == 10:
             Athairi_mother_merchant()
         else:
-            should_restart = True
+            Athairi_mother_commoner()
         return
 
 
 def Athairi_mother_merchant():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_mother_commoner()
@@ -157,28 +153,22 @@ def Athairi_mother_merchant():
         elif roll == 10:
             Athairi_mother_noble()
         else:
-            should_restart = True
+            Athairi_mother_merchant()
         return
 
 
 def Athairi_mother_noble():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_mother_merchant()
         elif roll == 6 or 7:
             print('Mother is a Lady.')
         else:
-            should_restart = True
+            Athairi_mother_noble()
         return
 
 
 def Athairi_father_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 4:
             print('Father is a Bandit.')
@@ -192,9 +182,6 @@ def Athairi_father_outlaw():
 
 
 def Athairi_father_forester():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_father_outlaw()
@@ -216,9 +203,6 @@ def Athairi_father_forester():
 
 
 def Athairi_father_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_father_forester()
@@ -431,9 +415,6 @@ def Aurian_father_occupation(social_level):
 
 
 def Aurian_mother_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 4:
             print('Mother is a Beggar.')
@@ -442,14 +423,11 @@ def Aurian_mother_outlaw():
         elif roll == 10:
             Aurian_mother_serf()
         else:
-            should_restart = True
+            Aurian_mother_outlaw()
         return
 
 
 def Aurian_mother_serf():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_mother_outlaw()
@@ -458,14 +436,11 @@ def Aurian_mother_serf():
         elif roll == 10:
             Aurian_mother_commoner()
         else:
-            should_restart = True
+            Aurian_mother_serf()
         return
 
 
 def Aurian_mother_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_mother_serf()
@@ -478,14 +453,11 @@ def Aurian_mother_commoner():
         elif roll == 10:
             Aurian_mother_lettered()
         else:
-            should_restart = True
+            Aurian_mother_commoner()
         return
 
 
 def Aurian_mother_lettered():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_mother_commoner()
@@ -494,28 +466,22 @@ def Aurian_mother_lettered():
         elif roll == 10:
             Aurian_mother_noble()
         else:
-            should_restart = True
+            Aurian_mother_lettered()
         return
 
 
 def Aurian_mother_noble():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_mother_lettered()
         if roll == 7 or 8:
             print('Mother is a Lady.')
         else:
-            should_restart = True
+            Aurian_mother_noble()
         return
 
 
 def Aurian_father_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 3:
             print('Father is a Bandit.')
@@ -532,14 +498,11 @@ def Aurian_father_outlaw():
         elif roll == 10:
             Aurian_father_serf()
         else:
-            should_restart = True
+            Aurian_father_outlaw()
         return
 
 
 def Aurian_father_serf():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_father_outlaw()
@@ -556,14 +519,11 @@ def Aurian_father_serf():
         elif roll == 10:
             Aurian_father_commoner()
         else:
-            should_restart = True
+            Aurian_father_serf()
         return
 
 
 def Aurian_father_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_father_serf()
@@ -584,13 +544,11 @@ def Aurian_father_commoner():
         elif roll == 10:
             Aurian_father_lettered()
         else:
-            should_restart = True
+            Aurian_father_commoner()
+        return
 
 
 def Aurian_father_lettered():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_father_commoner()
@@ -613,14 +571,11 @@ def Aurian_father_lettered():
         elif roll == 10:
             Aurian_father_noble()
         else:
-            should_restart = True
+            Aurian_father_lettered()
         return
 
 
 def Aurian_father_noble():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Aurian_father_lettered()
@@ -636,7 +591,7 @@ def Aurian_father_noble():
             print('Father is a Lord.')
         else:
             print('Father is a Seneschal.')
-    return
+        return
 
 
 def Aurian_parent_lineage():
@@ -777,9 +732,6 @@ def Danian_father_occupation(social_level):
 
 
 def Danian_mother_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 3:
             print('Mother is a Beggar.')
@@ -790,14 +742,11 @@ def Danian_mother_outlaw():
         elif roll == 10:
             Danian_mother_commoner()
         else:
-            should_restart = True
+            Danian_mother_outlaw()
         return
 
 
 def Danian_mother_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_mother_outlaw()
@@ -808,14 +757,11 @@ def Danian_mother_commoner():
         elif roll == 10:
             Danian_mother_artisan()
         else:
-            should_restart = True
+            Danian_mother_commoner()
         return
 
 
 def Danian_mother_artisan():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_mother_commoner()
@@ -832,14 +778,11 @@ def Danian_mother_artisan():
         elif roll == 10:
             Danian_mother_lettered()
         else:
-            should_restart = True
+            Danian_mother_artisan()
         return
 
 
 def Danian_mother_lettered():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_mother_lettered()
@@ -852,28 +795,22 @@ def Danian_mother_lettered():
         elif roll == 1:
             Danian_mother_noble()
         else:
-            should_restart = True
+            Danian_mother_lettered()
         return
 
 
 def Danian_mother_noble():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_mother_lettered()
         if roll == 6 or 7:
             print('Mother is a Lady.')
         else:
-            should_restart = True
+            Danian_mother_noble()
         return
 
 
 def Danian_father_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 3:
             print('Father is a Bandit.')
@@ -888,14 +825,11 @@ def Danian_father_outlaw():
         elif roll == 10:
             Danian_father_commoner()
         else:
-            should_restart = True
+            Danian_father_outlaw()
         return
 
 
 def Danian_father_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_father_outlaw()
@@ -918,14 +852,11 @@ def Danian_father_commoner():
         elif roll == 10:
             Danian_father_artisan()
         else:
-            should_restart = True
+            Danian_father_commoner()
         return
 
 
 def Danian_father_artisan():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_father_commoner()
@@ -946,14 +877,11 @@ def Danian_father_artisan():
         elif roll == 10:
             Danian_father_lettered()
         else:
-            should_restart = True
+            Danian_father_artisan()
         return
 
 
 def Danian_father_lettered():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_father_artisan()
@@ -976,14 +904,11 @@ def Danian_father_lettered():
         elif roll == 10:
             Danian_father_noble()
         else:
-            should_restart = True
+            Danian_father_lettered()
         return
 
 
 def Danian_father_noble():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Danian_father_lettered()
@@ -999,7 +924,7 @@ def Danian_father_noble():
             print('Father is a Lord.')
         else:
             print('Father is a Seneschal.')
-    return
+        return
 
 
 def Danian_parent_lineage():
@@ -1142,9 +1067,6 @@ def Watchtower_father_occupation(social_level):
 
 
 def Watchtower_mother_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 3:
             print('Mother is a Bandit.')
@@ -1159,14 +1081,11 @@ def Watchtower_mother_outlaw():
         elif roll == 10:
             Watchtower_mother_commoner()
         else:
-            should_restart = True
+            Watchtower_mother_outlaw()
         return
 
 
 def Watchtower_mother_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_mother_outlaw()
@@ -1177,14 +1096,11 @@ def Watchtower_mother_commoner():
         elif roll == 10:
             Watchtower_mother_freeman()
         else:
-            should_restart = True
+            Watchtower_mother_commoner()
         return
 
 
 def Watchtower_mother_freeman():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_mother_commoner()
@@ -1201,14 +1117,11 @@ def Watchtower_mother_freeman():
         elif roll == 10:
             Watchtower_mother_watchtower()
         else:
-            should_restart = True
+            Watchtower_mother_freeman()
         return
 
 
 def Watchtower_mother_watchtower():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_mother_freeman()
@@ -1219,14 +1132,11 @@ def Watchtower_mother_watchtower():
         elif roll == 10:
             Watchtower_mother_patrician()
         else:
-            should_restart = True
+            Watchtower_mother_watchtower()
         return
 
 
 def Watchtower_mother_patrician():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_mother_watchtower()
@@ -1237,14 +1147,11 @@ def Watchtower_mother_patrician():
         elif roll == 5:
             print('Mother is a Lady.')
         else:
-            should_restart = True
+            Watchtower_mother_patrician()
         return
 
 
 def Watchtower_father_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 3:
             print('Father is a Bandit.')
@@ -1261,14 +1168,11 @@ def Watchtower_father_outlaw():
         elif roll == 10:
             Watchtower_father_commoner()
         else:
-            should_restart = True
+            Watchtower_father_outlaw()
         return
 
 
 def Watchtower_father_commoner():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_father_outlaw()
@@ -1291,14 +1195,11 @@ def Watchtower_father_commoner():
         elif roll == 10:
             Watchtower_father_freeman()
         else:
-            should_restart = True
+            Watchtower_father_commoner()
         return
 
 
 def Watchtower_father_freeman():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_father_commoner()
@@ -1317,14 +1218,11 @@ def Watchtower_father_freeman():
         elif roll == 10:
             Watchtower_father_watchtower()
         else:
-            should_restart = True
+            Watchtower_father_freeman()
         return
 
 
 def Watchtower_father_watchtower():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_father_freeman()
@@ -1347,14 +1245,11 @@ def Watchtower_father_watchtower():
         elif roll == 10:
             Watchtower_father_patrician()
         else:
-            should_restart = True
+            Watchtower_father_watchtower()
         return
 
 
 def Watchtower_father_patrician():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Watchtower_father_watchtower()
@@ -1371,8 +1266,8 @@ def Watchtower_father_patrician():
         elif roll == 9:
             print('Father is a Priest (Divine King.)')
         else:
-            should_restart = True
-    return
+            print('Father is a Sage.')
+        return
 
 
 def Watchtower_parent_lineage():
@@ -1514,9 +1409,6 @@ def Daradjan_father_occupation(social_level):
 
 
 def Daradjan_mother_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 4:
             print('Mother is a Brigand, Highland.')
@@ -1527,14 +1419,11 @@ def Daradjan_mother_outlaw():
         elif roll == 10:
             Daradjan_mother_highlander()
         else:
-            should_restart = True
+            Daradjan_mother_outlaw()
         return
 
 
 def Daradjan_mother_highlander():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_mother_outlaw()
@@ -1551,14 +1440,11 @@ def Daradjan_mother_highlander():
         elif roll == 10:
             Daradjan_mother_freeman()
         else:
-            should_restart = True
+            Daradjan_mother_highlander()
         return
 
 
 def Daradjan_mother_freeman():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_mother_highlander()
@@ -1573,14 +1459,11 @@ def Daradjan_mother_freeman():
         elif roll == 10:
             Daradjan_mother_artisan()
         else:
-            should_restart = True
+            Daradjan_mother_freeman()
         return
 
 
 def Daradjan_mother_artisan():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_mother_freeman()
@@ -1603,14 +1486,11 @@ def Daradjan_mother_artisan():
         elif roll == 10:
             Daradjan_mother_citadel()
         else:
-            should_restart = True
+            Daradjan_mother_artisan()
         return
 
 
 def Daradjan_mother_citadel():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_mother_artisan()
@@ -1625,14 +1505,11 @@ def Daradjan_mother_citadel():
         elif roll == 9 or 10:
             print('Mother is a Warrior (Citadel).')
         else:
-            should_restart = True
+            Daradjan_mother_citadel()
         return
 
 
 def Daradjan_father_outlaw():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll < 4:
             print('Father is a Brigand, Highland.')
@@ -1645,13 +1522,11 @@ def Daradjan_father_outlaw():
         elif roll == 10:
             Daradjan_father_highlander()
         else:
-            should_restart = True
+            Daradjan_father_outlaw()
+        return
 
 
 def Daradjan_father_highlander():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_father_outlaw()
@@ -1670,14 +1545,11 @@ def Daradjan_father_highlander():
         elif roll == 10:
             Daradjan_father_freeman()
         else:
-            should_restart = True
+            Daradjan_father_highlander()
         return
 
 
 def Daradjan_father_freeman():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_father_highlander()
@@ -1696,14 +1568,11 @@ def Daradjan_father_freeman():
         elif roll == 10:
             Daradjan_father_artisan()
         else:
-            should_restart = True
+            Daradjan_father_freeman()
         return
 
 
 def Daradjan_father_artisan():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_father_freeman()
@@ -1722,14 +1591,11 @@ def Daradjan_father_artisan():
         elif roll == 10:
             Daradjan_father_citadel()
         else:
-            should_restart = True
+            Daradjan_father_artisan()
         return
 
 
 def Daradjan_father_citadel():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Daradjan_father_artisan()
@@ -2324,6 +2190,21 @@ def parent_attitude():
               'actively seek to help you out even when you don\'t ask')
     return
 
+def ordinal(value):
+    ordval = str(value)
+    if value % 100//10 != 1:
+        if value % 10 == 1:
+            ordval += 'st'
+        elif value % 10 == 2:
+            ordval += 'nd'
+        elif value % 10 == 3:
+            ordval += 'rd'
+        else:
+            ordval += 'th'
+    else:
+        ordval += 'th'
+
+    return ordval
 
 def siblings():
     siblings = (randint(1, 10))
@@ -2346,9 +2227,9 @@ def siblings():
             print('You are the youngest.')
         elif place < 9:
             if place > siblings:
-                print('You are ' + str(siblings) + ' born.')
+                print('You were the ' + ordinal(siblings), 'child.')
             else:
-                print('You are ' + str(place) + ' born.')
+                print('You were the ' + ordinal(place), 'child.')
         else:
             twins = (randint(1, 10))
             if twins == 1 and siblings == 1:
@@ -2357,7 +2238,7 @@ def siblings():
                 print('You have a twin. You are both the youngest in the family and have ' + str(
                     siblings - 1) + ' other sibling(s).')
             elif twins < 9:
-                print('You have a twin. You are ' + str(twins) + ' born and have ' + str(
+                print('You have a twin. You were the ' + ordinal(twins) + ' and have ' + str(
                     siblings - 1) + ' other sibling(s).')
             if twins == 9 or 10 and siblings >= 2:
                 triplets = (randint(1, 10))
@@ -2381,7 +2262,7 @@ def siblings():
                             elif sextuplets == 9 or 10 and siblings >= 6:
                                 print('You are part of a septuplet.')
                             else:
-                                print('You are part of a sextuplet and have an younter sibling')
+                                print('You are part of a sextuplet and have an younger sibling')
                         else:
                             print('You are part of a quintuplet and have ' + str(
                                 siblings - 4) + ' sibling(s). You and the other quintuplets are the oldest.')
