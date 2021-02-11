@@ -1495,7 +1495,7 @@ def Daradjan_mother_citadel():
         if roll == 1:
             Daradjan_mother_artisan()
         elif roll == 2:
-            print('Mother is a Bannermwoan (War Chieftess).')
+            print('Mother is a Bannerwoman (War Chieftess).')
         elif roll == 4 or 5:
             print('Mother is a Guard.')
         elif roll == 7:
