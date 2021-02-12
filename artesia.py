@@ -2,7 +2,7 @@
 # UTF-8
 
 # to do list
-# 1. reroll omens
+# 1. reroll rare omens
 # 2. keep track of stats
 # 3. keep track of contacts
 # 4. make social level from birth place carry over to parents occupation
@@ -2416,18 +2416,20 @@ def birth_omen():
         if omen == 1:
             # pick d3+1 on ill omen
             print('Doomed!')
-            random_omen = (randint(1, 3))
+            random_omen = (randint(1, 3)) + 1
+            print(random_omen_roll, ' Ill Omens')
             for i in range(random_omen):
+                print('Omen ', i ,':')
                 ill_omen()
-            ill_omen()
         elif omen == 2:
             # randomly pick d3+1 on tricky and ill omen
             print('Tricky Destiny!')
-            random_omen_roll = (randint(1, 3))
+            random_omen_roll = (randint(1, 3)) + 1
+            print(random_omen_roll, ' Tricky Omens')
             omen_list = [ill_omen(), tricky_omen()]
             for i in range(random_omen_roll):
+                print('Omen', i + 1, ':')
                 print(random.choice(omen_list))
-            print(random.choice(omen_list))
         elif omen == 3 or 4:
             print('Ill Omen.')
             ill_omen()
@@ -2442,9 +2444,11 @@ def birth_omen():
         elif omen == 19:
             # great destiny - d3+1 on good or tricky
             print('Great Destiny!')
-            random_omen_roll = (randint(1, 3))
+            random_omen_roll = (randint(1, 3)) + 1
+            print(random_omen_roll, ' Omens')
             omen_list = [good_omen(), tricky_omen()]
             for i in range(random_omen_roll):
+                print('Omen', i + 1, ':')
                 print(random.choice(omen_list))
             print(random.choice(omen_list))
         else:
@@ -2455,14 +2459,18 @@ def birth_omen():
             if omen == 1:
                 print('Doomed!')
                 random_omen_roll = (randint(1, 3))
+                print(random_omen_roll, ' Ill Omens')
                 for i in range(random_omen_roll):
+                    print('Omen', i + 1, ':')
                     ill_omen()
                 ill_omen()
             elif omen == 2:
                 print('Tricky Destiny!')
                 random_omen_roll = (randint(1, 3))
+                print(random_omen_roll, ' Tricky Omens')
                 omen_list = [ill_omen(), tricky_omen()]
                 for i in range(random_omen_roll):
+                    print('Omen', i + 1, ':')
                     print(random.choice(omen_list))
             elif omen == 3 or 4:
                 print('Ill Omen.')
@@ -2478,8 +2486,10 @@ def birth_omen():
             else:
                 print('Great Destiny!')
                 random_omen_roll = (randint(1, 3))
+                print(random_omen_roll, ' Omens')
                 omen_list = [good_omen(), tricky_omen()]
                 for i in range(random_omen_roll):
+                    print('Omen', i + 1, ':')
                     print(random.choice(omen_list))
             return
 
@@ -2488,19 +2498,21 @@ def birth_omen():
         if omen < 3:
             # d3 + 1 ill omen
             print('Doomed!')
-            random_omen_roll = (randint(1, 3))
+            random_omen_roll = (randint(1, 3)) + 1
+            print(random_omen_roll, ' Ill Omens')
             for i in range(random_omen_roll):
+                print('Omen', i + 1, ':')
                 ill_omen()
-            ill_omen()
         elif omen < 7:
             # d3+1 on tricky and ill omen
             # randomly pick d3+1 on tricky and ill omen
             print('Tricky Destiny!')
-            random_omen_roll = (randint(1, 3))
+            random_omen_roll = (randint(1, 3)) + 1
+            print(random_omen_roll, ' Omens')
             omen_list = [ill_omen(), tricky_omen()]
             for i in range(random_omen_roll):
+                print('Omen', i + 1, ':')
                 print(random.choice(omen_list))
-            print(random.choice(omen_list))
         elif omen < 16:
             print('Ill Omen.')
             ill_omen()
@@ -2515,11 +2527,12 @@ def birth_omen():
         elif omen < 100:
             # great destiny - d3+1 on good or tricky
             print('Great Destiny!')
-            random_omen_roll = (randint(1, 3))
+            random_omen_roll = (randint(1, 3)) + 1
+            print(random_omen_roll, ' Omens')
             omen_list = [good_omen(), tricky_omen()]
             for i in range(random_omen_roll):
+                print('Omen', i + 1, ':')
                 print(random.choice(omen_list))
-            print(random.choice(omen_list))
         else:
             # rare - 1 race + reroll w/o rare
             rare_omen()
@@ -2527,15 +2540,17 @@ def birth_omen():
             # mew if statement list to pick reroll omen
             if omen < 3:
                 print('Doomed!')
-                random_omen = (randint(1, 3))
-                for i in random_omen:
+                random_omen_roll = (randint(1, 3))
+                for i in range(random_omen_roll):
                     ill_omen()
                 ill_omen()
             elif omen < 7:
                 print('Tricky Destiny!')
                 random_omen_roll = (randint(1, 3))
+                print(random_omen, ' Omens')
                 omen_list = [ill_omen(), tricky_omen()]
                 for i in range(random_omen_roll):
+                    print('Omen', i + 1, ':')
                     print(random.choice(omen_list))
             elif omen < 16:
                 print('Ill Omen.')
@@ -2555,53 +2570,6 @@ def birth_omen():
                 for i in range(random_omen_roll):
                     print(random.choice(omen_list))
             return
-
-def good_or_tricky_omen():
-    goodortrickyOmen = (randint(1, 20))
-    if goodortrickyOmen == 1:
-        print('The Great Star is seen in the night sky. You are meant for great things: +1 WILL, +1 PRE.')
-    elif goodortrickyOmen == 2:
-        print('The Herald Star is seen in the night sky. You will be shown courtesy wherever you go: +1 PRE, +1 IMAG.')
-    elif goodortrickyOmen == 3:
-        print('The Morning Star is seen in the night sky. You will be fortunate in love: +1 EMP, +1 APP.')
-    elif goodortrickyOmen == 4:
-        print('An auroch or great bull is seen nearby. You will lead a life of vigor: +1 STAM, +1 WILL.')
-    elif goodortrickyOmen == 5:
-        print('A white stag is seen nearby. You will lead a noble life:  +1 CONV, +1 PRE.')
-    elif goodortrickyOmen == 6:
-        print('A rainbow is seen overhead. Yours will be a life of joy and plenty: +1 PRE, +1 TECH.')
-    elif goodortrickyOmen == 7:
-        print('A lion is seen nearby. You will be strong and valorous: +1 STR, +1 COUR.')
-    elif goodortrickyOmen == 8:
-        print('Flowers bloom nearby, even in winter. You will lead a life blessed by the Earth: +1 STAM, +1 WIS.')
-    elif goodortrickyOmen == 9:
-        print('A dove alights nearby. You will bring harmony to those around you: +1 EMP, +1 WIS.')
-    elif goodortrickyOmen == 10:
-        print('An eagle is seen overhead. You will grow up to be sharp-eyed and swift: +1 DEX, +1 PER.')
-    elif goodortrickyOmen == 11:
-        print('An owl watches your birth. You will be blessed with insights others lack: +1 WIS, +1 PER, -1 MEM.')
-    elif goodortrickyOmen == 12:
-        print('The Evening Star is seen in the sky. Your life will be filled with beauty: +1 APP, +1 PRE, -1 WILL.')
-    elif goodortrickyOmen == 13:
-        print('A satyr is seen nearby. Your life will be filled with trickery: +1 IMAG, +1 PRE, -1 WILL.')
-    elif goodortrickyOmen == 14:
-        print('The Conqueror Star is seen in the night sky. You will become a leader of men: +1 PRE, +1 WILL, -1 EMP.')
-    elif goodortrickyOmen == 15:
-        print('Archai are seen in the sky. The Heavens have taken note of your birth: +1 PRE, +1 APP, -1 EMP.')
-    elif goodortrickyOmen == 16:
-        print('A red stag is seen nearby. You will lead a life of danger: +1 STAM, +1 COUR, -1 WIS.')
-    elif goodortrickyOmen == 17:
-        print('The Midnight Star is seen in the night sky. You are lucky: 10 Fool Arcana Points to spend as you wish.')
-    elif goodortrickyOmen == 18:
-        print('A wild boar is seen nearby. You will be headstrong and brash: +1 WILL, +1 COUR, -1 WIS.')
-    elif goodortrickyOmen == 19:
-        print('A griffin is seen nearby. You will lead a life of invention and change: +1 TECH, +1 IMAG, -1 WILL.')
-    else:
-        print('A Star Dragon is seen in the sky. Your life is mysterious: +1 IMAG, +1 WIS, -1 REAS, Cryptic Mask 1.')
-    return
-
-
-
 
 def good_omen():
     goodOmen = (randint(1, 10))
@@ -2651,7 +2619,6 @@ def ill_omen():
         print('A ghost is seen nearby. You are touched by the Underworld: +1 WIS, -1 STR, -1 STAM, Ghost Mask1.')
     return
 
-
 def tricky_omen():
     trickyOmen = (randint(1, 10))
     if trickyOmen == 1:
@@ -2680,52 +2647,6 @@ def tricky_omen():
         print(
             'A Star Dragon is seen in the sky. Your life will be marked by mystery: +1 IMAG, +1 WIS, -1 REAS, Cryptic Mask 1.')
     return
-
-
-def ill_or_tricky_omen():
-    illortrickyOmen = (randint(1, 20))
-    if illortrickyOmen == 1:
-        print('The Red Veil falls upon the Moon.Bloodshed is in your future: +1 STR, +1 COUR, -1 EMP.')
-    elif illortrickyOmen == 2:
-        print('The Eye of Ishraha is seen in the sky. You will be treacherous and troublesome: +1 WILL, +1 PRE, -1 CONV.')
-    elif illortrickyOmen == 3:
-        print('The War Herald is seen in the night sky. Your life will be marked by war: +1 STR, +1 WILL, -1 EMP.')
-    elif illortrickyOmen == 4:
-        print('A great storm accompanies your birth. Your future will be unsettled: +1 IMAG, -1 COUR, -1 WILL.')
-    elif illortrickyOmen == 5:
-        print('Crops are spoiled nearby. You are cursed, and will grow up to be sickly: +1 PRE, -1 APP, -1 STAM.')
-    elif illortrickyOmen == 6:
-        print('Dead animals are found nearby. You are cursed to hard times and misery: +1 PRE, -1 APP, -1 EMP')
-    elif illortrickyOmen == 7:
-        print('Wolves are seen nearby. Your life will be filled with violence: +1 DEX, +1 COUR, -1 EMP.')
-    elif illortrickyOmen == 8:
-        print('A vulture witnesses your birth. You will not be a stranger to death: +1 STAM, +1 COUR, -1 EMP.')
-    elif illortrickyOmen == 9:
-        print('A black stag is seen nearby. You will lead a cursed and cowardly life: +1 PRE, -1 COUR.')
-    elif illortrickyOmen == 10:
-        print('A ghost is seen nearby. You are touched by the Underworld: +1 WIS, -1 STR, -1 STAM, Ghost Mask1.')
-    elif illortrickyOmen == 11:
-        print('An owl watches your birth. You will be blessed with insights others lack: +1 WIS, +1 PER, -1 MEM.')
-    elif illortrickyOmen == 12:
-        print('The Evening Star is seen in the sky. You will lead a life filled with beauty: +1 APP, +1 PRE, -1 WILL.')
-    elif illortrickyOmen == 13:
-        print('A satyr is seen nearby. Your life will be filled with trickery: +1 IMAG, +1 PRE, -1 WILL.')
-    elif illortrickyOmen == 14:
-        print('The Conqueror Star is seen in the night sky. You will become a leader of men: +1 PRE, +1 WILL, -1 EMP.')
-    elif illortrickyOmen == 15:
-        print('Archai are seen in the sky. The Heavens have taken note of your birth: +1 PRE, +1 APP, -1 EMP.')
-    elif illortrickyOmen == 16:
-        print('A red stag is seen nearby. You will lead a life of danger: +1 STAM, +1 COUR, -1 WIS.')
-    elif illortrickyOmen == 17:
-        print('The Midnight Star is seen in the sky. You are lucky: 10 Fool Arcana Points to spend as you wish.')
-    elif illortrickyOmen == 18:
-        print('A wild boar is seen nearby. You will be headstrong and brash: +1 WILL, +1 COUR, -1 WIS.')
-    elif illortrickyOmen == 19:
-        print('A griffin is seen nearby. You will lead a life of invention and change: +1 TECH, +1 IMAG, -1 WILL.')
-    else:
-        print('A Star Dragon is seen in the sky. Your life will be mysterious: +1 IMAG, +1 WIS, -1 REAS, Cryptic Mask 1.')
-    return
-
 
 def rare_omen():
     rareOmen = (randint(1, 10))
@@ -2882,7 +2803,7 @@ def childhood_goodfortune():
 def life_path():
     lifePath = (randint(1, 10))
     if lifePath == 1:
-        print('Nothing Happened')
+        print('It was an uneventful year')
     elif lifePath == 2:
         Life_Path_Major_Ill_Fortune()
     elif lifePath == 3 - 4:
