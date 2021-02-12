@@ -1,18 +1,13 @@
-#!/usr/local/bin/python
-# UTF-8
-
 # to do list
 # 1. keep track of stats
 # 2. keep track of contacts
 # 3. make social level from birth place carry over to parents occupation
 # 4. randomize names and ages
 
-from random import random, choice, randint
+from random import randint
 
 def Athairi_birth_place():
     social_level = 0
-    print('Athairi_birth_place():')
-    print('Social level is', social_level)
     birth_place = (randint(1, 10))
     print('Birth place random number is ', birth_place)
     if birth_place == 1:
@@ -45,6 +40,7 @@ def Athairi_birth_place():
     elif birth_place == 10:
         print('n Earl\'s Hold. Social Level is +4')
         social_level += 4
+    print(social_level)
     return social_level
 
 
@@ -61,15 +57,21 @@ def Athairi_parents(social_level):
 
 def Athairi_mother_occupation(social_level):
     social_level = (randint(1, 10)) + social_level
+    print('mother social level is', social_level)
     if social_level == 1:
+        print('starting outlaw')
         Athairi_mother_outlaw()
     elif social_level < 4:
+        print('starting forester')
         Athairi_mother_forester()
     elif social_level < 7:
+        print('starting commoner')
         Athairi_mother_commoner()
     elif social_level < 9:
+        print('starting merchant')
         Athairi_mother_merchant()
     else:
+        print('starting noble')
         Athairi_mother_noble()
     return
 
@@ -96,6 +98,7 @@ def Athairi_mother_outlaw():
         elif roll == 8 or 9:
             print('Mother is a Witch.')
         elif roll == 10:
+            print('increase from outlaw to forester')
             Athairi_mother_forester()
         else:
             Athairi_mother_outlaw()
@@ -105,6 +108,7 @@ def Athairi_mother_outlaw():
 def Athairi_mother_forester():
         roll = (randint(1, 10))
         if roll == 1:
+            print('decrease from forester to outlaw')
             Athairi_mother_outlaw()
         elif roll == 4:
             print('Mother is a Hermit.')
@@ -112,6 +116,9 @@ def Athairi_mother_forester():
             print('Mother is a Hunter.')
         elif roll == 6 or 7 or 8:
             print('Mother is a Laborer.')
+        elif roll == 10:
+            print('increase from forester to commoner')
+            Athairi_mother_commoner()
         else:
             Athairi_mother_forester()
         return
@@ -120,6 +127,7 @@ def Athairi_mother_forester():
 def Athairi_mother_commoner():
         roll = (randint(1, 10))
         if roll == 1:
+            print('decrease from forester to commoner')
             Athairi_mother_forester()
         elif roll == 2:
             print('Mother is a Farmer.')
@@ -134,6 +142,7 @@ def Athairi_mother_commoner():
         elif roll == 7:
             print('Mother is a Midwife or Priestess.')
         elif roll == 10:
+            print('increase from commoner to merchant')
             Athairi_mother_merchant()
         else:
             Athairi_mother_commoner()
@@ -143,6 +152,7 @@ def Athairi_mother_commoner():
 def Athairi_mother_merchant():
         roll = (randint(1, 10))
         if roll == 1:
+            print('increase from merchant to commoner')
             Athairi_mother_commoner()
         elif roll == 2:
             print('Mother is an Artisan.')
@@ -151,6 +161,7 @@ def Athairi_mother_merchant():
         elif roll == 5:
             print('Mother is a Householder.')
         elif roll == 10:
+            print('increase from merchant to noble')
             Athairi_mother_noble()
         else:
             Athairi_mother_merchant()
@@ -160,6 +171,7 @@ def Athairi_mother_merchant():
 def Athairi_mother_noble():
         roll = (randint(1, 10))
         if roll == 1:
+            print('decrease from noble to merchant')
             Athairi_mother_merchant()
         elif roll == 6 or 7:
             print('Mother is a Lady.')
@@ -219,7 +231,7 @@ def Athairi_father_commoner():
         elif roll == 8:
             print('Father is a Trader.')
         elif roll == 9:
-            print('Father is a Warrior (Mecenary or Vassal).')
+            print('Father is a Warrior (Mercenary or Vassal).')
         else:
             Athairi_father_merchant()
         return
@@ -585,12 +597,12 @@ def Aurian_father_noble():
             print('Father is a Herald .')
         elif roll < 7:
             print('Father is a Knight.')
-        elif roll == 7 or 8:
-            should_restart = True
         elif roll == 9:
             print('Father is a Lord.')
-        else:
+        elif roll == 10:
             print('Father is a Seneschal.')
+        else:
+            Aurian_father_noble()
         return
 
 
@@ -790,7 +802,7 @@ def Danian_mother_lettered():
             print('Mother is a Bard .')
         elif roll == 5:
             print('Mother is a Merchant.')
-        elif second_roll == 6:
+        elif roll == 6:
             print('Mother is a Physician-Healer.')
         elif roll == 1:
             Danian_mother_noble()
@@ -922,8 +934,10 @@ def Danian_father_noble():
             print('Father is a Lady.')
         elif roll < 10:
             print('Father is a Lord.')
-        else:
+        elif  roll == 10:
             print('Father is a Seneschal.')
+        else:
+            Danian_father_noble()
         return
 
 
@@ -1265,8 +1279,10 @@ def Watchtower_father_patrician():
             print('Father is a Physician-Healer.')
         elif roll == 9:
             print('Father is a Priest (Divine King.)')
-        else:
+        elif roll == 10:
             print('Father is a Sage.')
+        else:
+            Watchtower_father_patrician()
         return
 
 
@@ -2423,10 +2439,9 @@ def birth_omen():
             # randomly pick d3+1 on tricky and ill omen
             print('Tricky Destiny!')
             random_omen = (randint(1, 3))
-            omen_list = [ill_omen(), tricky_omen()]
             for i in range(random_omen):
-                random.choice(omen_list)
-            random.choice(omen_list)
+                ill_or_tricky_omen()
+            ill_or_tricky_omen()
         elif omen == 3 or 4:
             print('Ill Omen.')
             ill_omen()
@@ -2442,10 +2457,9 @@ def birth_omen():
             # great destiny - d3+1 on good or tricky
             print('Great Destiny!')
             random_omen = (randint(1, 3))
-            omen_list = [good_omen(), tricky_omen()]
             for i in range(random_omen):
-                random.choice(omen_list)
-            random.choice(omen_list)
+                good_or_tricky_omen()
+            good_or_tricky_omen()
         else:
             # rare - 1 race + reroll w/o rare
             rare_omen()
@@ -2460,10 +2474,9 @@ def birth_omen():
             elif omen == 2:
                 print('Tricky Destiny!')
                 random_omen = (randint(1, 3))
-                omen_list = [ill_omen(), tricky_omen()]
                 for i in range(random_omen):
-                    random.choice(omen_list)
-                random.choice(omen_list)
+                    ill_or_tricky_omen()
+                ill_or_tricky_omen()
             elif omen == 3 or 4:
                 print('Ill Omen.')
                 ill_omen()
@@ -2478,10 +2491,9 @@ def birth_omen():
             else:
                 print('Great Destiny!')
                 random_omen = (randint(1, 3))
-                omen_list = [good_omen(), tricky_omen()]
                 for i in range(random_omen):
-                    random.choice(omen_list)
-                random.choice(omen_list)
+                    good_or_tricky_omen()
+                good_or_tricky_omen()
 
     if heroic_campaign == 'n':
         omen = (randint(1, 100))
@@ -2497,10 +2509,9 @@ def birth_omen():
             # randomly pick d3+1 on tricky and ill omen
             print('Tricky Destiny!')
             random_omen = (randint(1, 3))
-            omen_list = [ill_omen(), tricky_omen()]
             for i in range(random_omen):
-                random.choice(omen_list)
-            random.choice(omen_list)
+                ill_or_tricky_omen()
+            ill_or_tricky_omen()
         elif omen < 16:
             print('Ill Omen.')
             ill_omen()
@@ -2516,10 +2527,9 @@ def birth_omen():
             # great destiny - d3+1 on good or tricky
             print('Great Destiny!')
             random_omen = (randint(1, 3))
-            omen_list = [good_omen(), tricky_omen()]
             for i in range(random_omen):
-                random.choice(omen_list)
-            random.choice(omen_list)
+                good_or_tricky_omen()
+            good_or_tricky_omen()
         else:
             # rare - 1 race + reroll w/o rare
             rare_omen()
@@ -2534,10 +2544,9 @@ def birth_omen():
             elif omen < 7:
                 print('Tricky Destiny!')
                 random_omen = (randint(1, 3))
-                omen_list = [ill_omen(), tricky_omen()]
                 for i in random_omen:
-                    random.choice(omen_list)
-                random.choice(omen_list)
+                    ill_or_tricky_omen()
+                ill_or_tricky_omen()
             elif omen < 16:
                 print('Ill Omen.')
                 ill_omen()
@@ -2552,11 +2561,59 @@ def birth_omen():
             else:
                 print('Great Destiny!')
                 random_omen = (randint(1, 3))
-                omen_list = [good_omen(), tricky_omen()]
                 for i in random_omen:
-                    random.choice(omen_list)
-                random.choice(omen_list)
+                    good_or_tricky_omen()
+                good_or_tricky_omen()
 
+def good_or_tricky_omen():
+    goodortrickyOmen = (randint(1, 20))
+    if goodortrickyOmen == 1:
+        print('The Great Star is seen in the night sky. You are meant for great things: +1 WILL, +1 PRE.')
+    elif goodortrickyOmen == 2:
+        print(
+            'The Herald Star is seen in the night sky. You will be greeted with courtesy wherever you go: +1 PRE, +1 IMAG.')
+    elif goodortrickyOmen == 3:
+        print('The Morning Star is seen in the night sky. You will be fortunate in love: +1 EMP, +1 APP.')
+    elif goodortrickyOmen == 4:
+        print('An auroch or great bull is seen nearby. You will lead a life of vigor: +1 STAM, +1 WILL.')
+    elif goodortrickyOmen == 5:
+        print('A white stag is seen nearby. You will lead a noble life:  +1 CONV, +1 PRE.')
+    elif goodortrickyOmen == 6:
+        print('A rainbow is seen overhead. Yours will be a life of joy and plenty: +1 PRE, +1 TECH.')
+    elif goodortrickyOmen == 7:
+        print('A lion is seen nearby. You will be strong and valorous: +1 STR, +1 COUR.')
+    elif goodortrickyOmen == 8:
+        print('Flowers bloom nearby, even in winter. You will lead a life blessed by the Earth: +1 STAM, +1 WIS.')
+    elif goodortrickyOmen == 9:
+        print('A dove alights nearby. You will bring harmony to those around you: +1 EMP, +1 WIS.')
+    elif goodortrickyOmen == 10:
+        print('An eagle is seen overhead. You will grow up to be sharp-eyed and swift: +1 DEX, +1 PER.')
+    elif goodortrickyOmen == 11:
+        print(
+            'An owl watches your birth. You will be blessed with insights no one else will have: +1 WIS, +1 PER, -1 MEM.')
+    elif goodortrickyOmen == 12:
+        print(
+            'The Evening Star is seen in the night sky. You will lead a life filled with beauty and sensual pleasures: +1 APP, +1 PRE, -1 WILL.')
+    elif goodortrickyOmen == 13:
+        print('A satyr is seen nearby. Your life will be filled with trickery: +1 IMAG, +1 PRE, -1 WILL.')
+    elif goodortrickyOmen == 14:
+        print('The Conqueror Star is seen in the night sky. You will become a leader of men: +1 PRE, +1 WILL, -1 EMP.')
+    elif goodortrickyOmen == 15:
+        print(
+            'Archai (Star Messengers) are seen in the sky. The Heavens have taken note of your birth: +1 PRE, +1 APP, -1 EMP.')
+    elif goodortrickyOmen == 16:
+        print('A red stag is seen nearby. You will lead a life of danger: +1 STAM, +1 COUR, -1 WIS.')
+    elif goodortrickyOmen == 17:
+        print(
+            'The Midnight Star is seen in the night sky. You\'re born lucky: 10 Fool Arcana Points to spend as you wish.')
+    elif goodortrickyOmen == 18:
+        print('A wild boar is seen nearby. You will be headstrong and brash: +1 WILL, +1 COUR, -1 WIS.')
+    elif goodortrickyOmen == 19:
+        print('A griffin is seen nearby. You will lead a life of invention and change: +1 TECH, +1 IMAG, -1 WILL.')
+    else:
+        print(
+            'A Star Dragon is seen in the sky. Your life will be marked by mystery: +1 IMAG, +1 WIS, -1 REAS, Cryptic Mask 1.')
+    return
 
 def good_omen():
     goodOmen = (randint(1, 10))
@@ -2582,7 +2639,6 @@ def good_omen():
     elif goodOmen == 10:
         print('An eagle is seen overhead. You will grow up to be sharp-eyed and swift: +1 DEX, +1 PER.')
     return
-
 
 def ill_omen():
     illOmen = (randint(1, 10))
@@ -2642,6 +2698,58 @@ def tricky_omen():
     return
 
 
+def ill_or_tricky_omen():
+    illortrickyOmen = (randint(1, 20))
+    if illortrickyOmen == 1:
+        print('The Red Veil falls upon the Moon.Bloodshed is in your future: +1 STR, +1 COUR, -1 EMP.')
+    elif illortrickyOmen == 2:
+        print(
+            'The Eye of Ishraha is seen in the night sky. You will be treacherous and troublesome: +1 WILL, +1 PRE, -1 CONV.')
+    elif illortrickyOmen == 3:
+        print('The War Herald is seen in the night sky. Your life will be marked by war: +1 STR, +1 WILL, -1 EMP.')
+    elif illortrickyOmen == 4:
+        print('A great storm accompanies your birth. Your future will be unsettled: +1 IMAG, -1 COUR, -1 WILL.')
+    elif illortrickyOmen == 5:
+        print('Crops are spoiled nearby. You are cursed, and will grow up to be sickly: +1 PRE, -1 APP, -1 STAM.')
+    elif illortrickyOmen == 6:
+        print(
+            'Dead animals, birds, or fish are found nearby. You are cursed to hard times and misery: +1 PRE, -1 APP, -1 EMP')
+    elif illortrickyOmen == 7:
+        print(
+            'Wolves and carrion birds are seen nearby. Your life will be filled with violence: +1 DEX, +1 COUR, -1 EMP.')
+    elif illortrickyOmen == 8:
+        print('A vulture witnesses your birth. You will not be a stranger to death: +1 STAM, +1 COUR, -1 EMP.')
+    elif illortrickyOmen == 9:
+        print('A black stag is seen nearby. You will lead a cursed and cowardly life: +1 PRE, -1 COUR.')
+    elif illortrickyOmen == 10:
+        print('A ghost is seen nearby. You are touched by the Underworld: +1 WIS, -1 STR, -1 STAM, Ghost Mask1.')
+    elif illortrickyOmen == 11:
+        print(
+            'An owl watches your birth. You will be blessed with insights no one else will have: +1 WIS, +1 PER, -1 MEM.')
+    elif illortrickyOmen == 12:
+        print(
+            'The Evening Star is seen in the night sky. You will lead a life filled with beauty and sensual pleasures: +1 APP, +1 PRE, -1 WILL.')
+    elif illortrickyOmen == 13:
+        print('A satyr is seen nearby. Your life will be filled with trickery: +1 IMAG, +1 PRE, -1 WILL.')
+    elif illortrickyOmen == 14:
+        print('The Conqueror Star is seen in the night sky. You will become a leader of men: +1 PRE, +1 WILL, -1 EMP.')
+    elif illortrickyOmen == 15:
+        print(
+            'Archai (Star Messengers) are seen in the sky. The Heavens have taken note of your birth: +1 PRE, +1 APP, -1 EMP.')
+    elif illortrickyOmen == 16:
+        print('A red stag is seen nearby. You will lead a life of danger: +1 STAM, +1 COUR, -1 WIS.')
+    elif illortrickyOmen == 17:
+        print(
+            'The Midnight Star is seen in the night sky. You\'re born lucky: 10 Fool Arcana Points to spend as you wish.')
+    elif illortrickyOmen == 18:
+        print('A wild boar is seen nearby. You will be headstrong and brash: +1 WILL, +1 COUR, -1 WIS.')
+    elif illortrickyOmen == 19:
+        print('A griffin is seen nearby. You will lead a life of invention and change: +1 TECH, +1 IMAG, -1 WILL.')
+    else:
+        print(
+            'A Star Dragon is seen in the sky. Your life will be marked by mystery: +1 IMAG, +1 WIS, -1 REAS, Cryptic Mask 1.')
+    return
+
 def rare_omen():
     rareOmen = (randint(1, 10))
     if rareOmen == 1:
@@ -2677,6 +2785,7 @@ def rare_omen():
 
 
 def childhood():
+    print('Childhood:')
     childhood_event = (randint(1, 10))
     if childhood_event < 5:
         childhood_illfortune()
@@ -2816,7 +2925,7 @@ def Life_Path_Major_Ill_Fortune():
 
     if LPMajorIllFortune == 1:
         print('Financial Disaster.  You lost a lot of money (' + str(
-            (randint(10)) * 25) + '), either through a bad business investment, \n'
+            (randint(1, 10)) * 25) + '), either through a bad business investment, \n'
                                   'gambling, or carelessness.  Roll d10 x 25 to determine how much you lost in g.  If you don\'t have enough g at the moment from previous \n'
                                   'earnings to cover the loss, then you are in debt until the loss is covered.  Gain a Shame 2 Binding.')
     elif LPMajorIllFortune == 2:
@@ -3131,51 +3240,58 @@ while answer != 'n':
     print('Generating culture')
     culture = (randint(1, 10))
     if culture == 1:
-        culture = 'Athairi'
+        #culture = 'Athairi'
         print('You were born an Athairi in a', end="")
-        social_level = Athairi_birth_place()
-        Athairi_parents(social_level)
+        Athairi_parents(Athairi_birth_place())
     elif culture == 1 < 5:
-        culture = 'Aurian'
+        #culture = 'Aurian'
         print('You were born an Aurian in a', end="")
-        social_level = Aurian_birth_place()
-        Aurian_parents(social_level)
+        Aurian_parents(Aurian_birth_place())
     elif culture == 4 < 8:
-        culture = 'Danian'
+        #culture = 'Danian'
         print('You were born a Danian in a', end="")
-        social_level = Danian_birth_place()
-        Danian_parents(social_level)
+        Danian_parents(Danian_birth_place())
     elif culture == 8:
-        culture = 'Watchtower'
+        #culture = 'Watchtower'
         print('You were born a Watchtower King in a', end="")
-        social_level = Watchtower_birth_place()
-        Watchtower_parents(social_level)
+        Watchtower_parents(Watchtower_birth_place())
     else:
-        culture = 'Daradjan'
+        #culture = 'Daradjan'
         print('You were born a Daradjan in a', end="")
-        social_level = Daradjan_birth_place()
-        Daradjan_parents(social_level)
-
+        Daradjan_parents(Daradjan_birth_place())
+    print("\n")
     unusual_circumstances()
+    print("\n")
     birth_sign()
+    print("\n")
     birth_omen()
+    print("\n")
     childhood()
+    print("\n")
     siblings()
+    print("\n")
     print('Your mother', end="")
     parent_attitude()
     print('Your father', end="")
     parent_attitude()
+    print("\n")
     print('Generating Life Path')
+    print("\n")
     print('Year 1: ')
     life_path()
+    print("\n")
     print('Year 2: ')
     life_path()
+    print("\n")
     print('Year 3: ')
     life_path()
+    print("\n")
     print('Year 4: ')
     life_path()
+    print("\n")
     print('Year 5: ')
     life_path()
+    print("\n")
     print('Character creation complete.')
     answer = input('Would you like to create a new character? (y/n): ')
     if answer == 'n':
