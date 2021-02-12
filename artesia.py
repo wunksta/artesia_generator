@@ -2,10 +2,11 @@
 # UTF-8
 
 # to do list
-# 1. keep track of stats
-# 2. keep track of contacts
-# 3. randomize names and ages
-# 4. remember parent death 
+# 1. reroll omens
+# 2. keep track of stats
+# 3. keep track of contacts
+# 4. make social level from birth place carry over to parents occupation
+# 5. randomize names and ages
 
 import random
 from random import randint
@@ -2447,42 +2448,41 @@ def birth_omen():
             for i in range(random_omen_roll):
                 print('Omen', i + 1, ':')
                 print(random.choice(omen_list))
-            print(random.choice(omen_list))
         else:
             # rare - 1 race + reroll w/o rare
+            print('Rare Omen!')
             rare_omen()
             reroll_omen = (randint(1, 19))
             # mew if statement list to pick reroll omen
-            if omen == 1:
+            if reroll_omen == 1:
                 print('Doomed!')
-                random_omen_roll = (randint(1, 3))
+                random_omen_roll = (randint(1, 3)) + 1
                 print(random_omen_roll, ' Ill Omens')
                 for i in range(random_omen_roll):
                     print('Omen', i + 1, ':')
                     ill_omen()
-                ill_omen()
-            elif omen == 2:
+            elif reroll_omen == 2:
                 print('Tricky Destiny!')
-                random_omen_roll = (randint(1, 3))
+                random_omen_roll = (randint(1, 3)) + 1
                 print(random_omen_roll, ' Tricky Omens')
                 omen_list = [ill_omen(), tricky_omen()]
                 for i in range(random_omen_roll):
                     print('Omen', i + 1, ':')
                     print(random.choice(omen_list))
-            elif omen == 3 or 4:
+            elif reroll_omen == 3 or 4:
                 print('Ill Omen.')
                 ill_omen()
-            elif omen == 5 or 6:
+            elif reroll_omen == 5 or 6:
                 print('Tricky Omen.')
                 tricky_omen()
-            elif omen < 17:
+            elif reroll_omen < 17:
                 print('A typical birth.')
-            elif omen < 19:
+            elif reroll_omen < 19:
                 print('Good Omen.')
                 good_omen()
             else:
                 print('Great Destiny!')
-                random_omen_roll = (randint(1, 3))
+                random_omen_roll = (randint(1, 3)) + 1
                 print(random_omen_roll, ' Omens')
                 omen_list = [good_omen(), tricky_omen()]
                 for i in range(random_omen_roll):
@@ -2532,18 +2532,18 @@ def birth_omen():
                 print(random.choice(omen_list))
         else:
             # rare - 1 race + reroll w/o rare
+            print('Rare Omen!')
             rare_omen()
             reroll_omen = (randint(1, 99))
             # mew if statement list to pick reroll omen
-            if omen < 3:
+            if reroll_omen < 3:
                 print('Doomed!')
-                random_omen_roll = (randint(1, 3))
+                random_omen_roll = (randint(1, 3)) + 1
                 for i in range(random_omen_roll):
                     ill_omen()
-                ill_omen()
-            elif omen < 7:
+            elif reroll_omen < 7:
                 print('Tricky Destiny!')
-                random_omen_roll = (randint(1, 3))
+                random_omen_roll = (randint(1, 3)) + 1
                 print(random_omen, ' Omens')
                 omen_list = [ill_omen(), tricky_omen()]
                 for i in range(random_omen_roll):
@@ -2562,7 +2562,7 @@ def birth_omen():
                 good_omen()
             else:
                 print('Great Destiny!')
-                random_omen_roll = (randint(1, 3))
+                random_omen_roll = (randint(1, 3)) + 1
                 omen_list = [ill_omen(), tricky_omen()]
                 for i in range(random_omen_roll):
                     print(random.choice(omen_list))
