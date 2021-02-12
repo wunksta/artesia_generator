@@ -9,7 +9,6 @@ from random import randint
 def Athairi_birth_place():
     social_level = 0
     birth_place = (randint(1, 10))
-    print('Birth place random number is ', birth_place)
     if birth_place == 1:
         print(' Bandit Camp. Social Level is Outlaw')
         social_level -= 5
@@ -57,21 +56,15 @@ def Athairi_parents(social_level):
 
 def Athairi_mother_occupation(social_level):
     social_level = (randint(1, 10)) + social_level
-    print('mother social level is', social_level)
     if social_level == 1:
-        print('starting outlaw')
         Athairi_mother_outlaw()
     elif social_level < 4:
-        print('starting forester')
         Athairi_mother_forester()
     elif social_level < 7:
-        print('starting commoner')
         Athairi_mother_commoner()
     elif social_level < 9:
-        print('starting merchant')
         Athairi_mother_merchant()
     else:
-        print('starting noble')
         Athairi_mother_noble()
     return
 
@@ -98,7 +91,6 @@ def Athairi_mother_outlaw():
         elif roll == 8 or 9:
             print('Mother is a Witch.')
         elif roll == 10:
-            print('increase from outlaw to forester')
             Athairi_mother_forester()
         else:
             Athairi_mother_outlaw()
@@ -108,7 +100,6 @@ def Athairi_mother_outlaw():
 def Athairi_mother_forester():
         roll = (randint(1, 10))
         if roll == 1:
-            print('decrease from forester to outlaw')
             Athairi_mother_outlaw()
         elif roll == 4:
             print('Mother is a Hermit.')
@@ -117,7 +108,6 @@ def Athairi_mother_forester():
         elif roll == 6 or 7 or 8:
             print('Mother is a Laborer.')
         elif roll == 10:
-            print('increase from forester to commoner')
             Athairi_mother_commoner()
         else:
             Athairi_mother_forester()
@@ -127,7 +117,6 @@ def Athairi_mother_forester():
 def Athairi_mother_commoner():
         roll = (randint(1, 10))
         if roll == 1:
-            print('decrease from forester to commoner')
             Athairi_mother_forester()
         elif roll == 2:
             print('Mother is a Farmer.')
@@ -142,7 +131,6 @@ def Athairi_mother_commoner():
         elif roll == 7:
             print('Mother is a Midwife or Priestess.')
         elif roll == 10:
-            print('increase from commoner to merchant')
             Athairi_mother_merchant()
         else:
             Athairi_mother_commoner()
@@ -152,7 +140,6 @@ def Athairi_mother_commoner():
 def Athairi_mother_merchant():
         roll = (randint(1, 10))
         if roll == 1:
-            print('increase from merchant to commoner')
             Athairi_mother_commoner()
         elif roll == 2:
             print('Mother is an Artisan.')
@@ -161,7 +148,6 @@ def Athairi_mother_merchant():
         elif roll == 5:
             print('Mother is a Householder.')
         elif roll == 10:
-            print('increase from merchant to noble')
             Athairi_mother_noble()
         else:
             Athairi_mother_merchant()
@@ -171,7 +157,6 @@ def Athairi_mother_merchant():
 def Athairi_mother_noble():
         roll = (randint(1, 10))
         if roll == 1:
-            print('decrease from noble to merchant')
             Athairi_mother_merchant()
         elif roll == 6 or 7:
             print('Mother is a Lady.')
@@ -238,9 +223,6 @@ def Athairi_father_commoner():
 
 
 def Athairi_father_merchant():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_father_commoner()
@@ -266,9 +248,6 @@ def Athairi_father_merchant():
 
 
 def Athairi_father_noble():
-    should_restart = True
-    while should_restart == True:
-        should_restart = False
         roll = (randint(1, 10))
         if roll == 1:
             Athairi_father_merchant()
@@ -3238,27 +3217,28 @@ def Life_Path_Great_Adventure():
 answer = ''
 while answer != 'n':
     print('Generating culture')
+    Athairi_parents(Athairi_birth_place())
     culture = (randint(1, 10))
     if culture == 1:
-        #culture = 'Athairi'
-        print('You were born an Athairi in a', end="")
-        Athairi_parents(Athairi_birth_place())
+         culture = 'Athairi'
+         print('You were born an Athairi in a', end="")
+         Athairi_parents(Athairi_birth_place())
     elif culture == 1 < 5:
-        #culture = 'Aurian'
-        print('You were born an Aurian in a', end="")
-        Aurian_parents(Aurian_birth_place())
+         culture = 'Aurian'
+         print('You were born an Aurian in a', end="")
+         Aurian_parents(Aurian_birth_place())
     elif culture == 4 < 8:
-        #culture = 'Danian'
-        print('You were born a Danian in a', end="")
-        Danian_parents(Danian_birth_place())
+         culture = 'Danian'
+         print('You were born a Danian in a', end="")
+         Danian_parents(Danian_birth_place())
     elif culture == 8:
-        #culture = 'Watchtower'
-        print('You were born a Watchtower King in a', end="")
-        Watchtower_parents(Watchtower_birth_place())
+         culture = 'Watchtower'
+         print('You were born a Watchtower King in a', end="")
+         Watchtower_parents(Watchtower_birth_place())
     else:
-        #culture = 'Daradjan'
-        print('You were born a Daradjan in a', end="")
-        Daradjan_parents(Daradjan_birth_place())
+         culture = 'Daradjan'
+         print('You were born a Daradjan in a', end="")
+         Daradjan_parents(Daradjan_birth_place())
     print("\n")
     unusual_circumstances()
     print("\n")
