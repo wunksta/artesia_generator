@@ -2,7 +2,7 @@
 # UTF-8
 
 # to do list
-# 1. reroll rare omens
+# 1. reroll omens
 # 2. keep track of stats
 # 3. keep track of contacts
 # 4. make social level from birth place carry over to parents occupation
@@ -44,12 +44,10 @@ def Athairi_birth_place():
     elif birth_place == 10:
         print('n Earl\'s Hold. Social Level is +4')
         social_level += 4
-    print(social_level)
     return social_level
 
 
 def Athairi_parents(social_level):
-    print('Social level is', social_level)
     Athairi_mother_occupation(social_level)
     print('Your mother was descended from:')
     Athairi_parent_lineage()
@@ -2508,7 +2506,7 @@ def birth_omen():
             # randomly pick d3+1 on tricky and ill omen
             print('Tricky Destiny!')
             random_omen_roll = (randint(1, 3)) + 1
-            print(random_omen_roll, ' Omens')
+            print(random_omen_roll, ' Tricky Omens')
             omen_list = [ill_omen(), tricky_omen()]
             for i in range(random_omen_roll):
                 print('Omen', i + 1, ':')
