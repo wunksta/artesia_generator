@@ -2,11 +2,10 @@
 # UTF-8
 
 # to do list
-# 1. reroll omens
-# 2. keep track of stats
-# 3. keep track of contacts
-# 4. make social level from birth place carry over to parents occupation
-# 5. randomize names and ages
+# 1. keep track of stats
+# 2. keep track of contacts
+# 3. randomize names and ages
+# 4. remember parent death 
 
 import random
 from random import randint
